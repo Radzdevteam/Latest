@@ -40,12 +40,14 @@ android {
     }
 }
 
+
+
 publishing {
-    repositories {
-        maven {
-            val releasesRepoUrl = layout.buildDirectory.dir("repos/releases")
-            val snapshotsRepoUrl = layout.buildDirectory.dir("repos/snapshots")
-            url = uri(if (project.hasProperty("release")) releasesRepoUrl else snapshotsRepoUrl)
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.gradle.sample"
+            artifactId = "library"
+            version = "1.1"
         }
     }
 }
